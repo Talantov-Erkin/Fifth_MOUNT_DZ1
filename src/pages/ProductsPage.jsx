@@ -4,7 +4,6 @@ import { Alert, Empty, Rate, Spin, Tag } from "antd"
 import { getOldPrice, getProducts } from "../helpers/helpers"
 import styles from "../styles/ProductsPage.module.scss"
 
-// Карточка товара — получает товар через пропс product
 const ProductCard = ({ product }) => {
   const { id, title, thumbnail, category, rating, price, discountPercentage } = product
 

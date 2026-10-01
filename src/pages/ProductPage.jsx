@@ -4,7 +4,6 @@ import { Alert, Button, Descriptions, Rate, Result, Spin, Tag } from "antd"
 import { getOldPrice, getProductById } from "../helpers/helpers"
 import styles from "../styles/ProductPage.module.scss"
 
-// Галерея — получает images и title через пропсы
 const ProductGallery = ({ images, title }) => {
   const [activeImage, setActiveImage] = useState(0)
 
@@ -32,7 +31,6 @@ const ProductGallery = ({ images, title }) => {
   )
 }
 
-// Информация о товаре — получает product через пропс
 const ProductInfo = ({ product }) => {
   const {
     title, brand, category, tags, rating, reviews, price,
@@ -94,7 +92,6 @@ const ProductInfo = ({ product }) => {
   )
 }
 
-// Отзывы — получает reviews через пропс
 const ProductReviews = ({ reviews }) => {
   if (!reviews?.length) return null
 
@@ -125,11 +122,8 @@ const ProductPage = () => {
 
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null) // 'not-found' или текст ошибки
-
+  const [error, setError] = useState(null) 
   useEffect(() => {
-    // флаг, чтобы не записать в state ответ старого запроса,
-    // если id уже сменился или компонент размонтирован
     let ignore = false
 
     const fetchProduct = async () => {
@@ -196,7 +190,6 @@ const ProductPage = () => {
       </Link>
 
       <div className={styles.product}>
-        {/* key сбрасывает выбранную картинку при переходе на другой товар */}
         <ProductGallery key={product.id} images={product.images} title={product.title} />
         <ProductInfo product={product} />
       </div>
